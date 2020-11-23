@@ -1,0 +1,9 @@
+.cover-full-image-1 {
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-attachment: fixed;
+  background-size:  cover;
+  background-color: #999;
+
+  @include response-image('/images/placeholder.jpg');
+}

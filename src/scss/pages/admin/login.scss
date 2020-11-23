@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/* Load general files */
+@import "../../common/variables";
+@import "../../common/helpers";
+@import "../../common/general";
+
+/* Load block files */
+@import "../../blocks/footer";
+@import "../../blocks/image/cover_full_image_1";
