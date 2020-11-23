@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'src/scss'),
+  src: path.join(__dirname, 'scss'),
   dest: path.join(__dirname, 'public/css'),
   prefix:  '/css',
   outputStyle: 'compressed',
