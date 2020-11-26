@@ -5,11 +5,40 @@
             <div class="col s12 m6 offset-m3">
                 <div class="card grey lighten-3">
                     <div class="card-content black-text">
-                        <span class="card-title center">Login</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, odio.</p>
+                        <h1 class="card-title center">Login</h1>
+                        <form method="post">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">email</i>
+                                    <input id="email" name="email" autocomplete="email" required="required" type="email" class="validate">
+                                    <label for="email" class="active">Email</label>
+                                    <span class="helper-text" data-error="Invalid email" data-success="Valid email">Please enter your account email</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input id="password" autocomplete="current-password" name="password" required="required" type="password" class="validate">
+                                    <label for="password" class="active">Password</label>
+                                    <span class="helper-text" data-error="Enter your password" data-success="Password correct">Enter your password</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn waves-effect waves-light btn-large full-width" type="submit">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="card-action">
-                        <a href="#">This is a link</a>
+                        <a href="/" title="Go to main page">
+                            <i class="material-icons inline-icon">chevron_left</i>Homepage
+                        </a>
+                        <a href="/admin/register" class="right">
+                            Sign up<i class="material-icons inline-icon">chevron_right</i>
+                        </a>
                     </div>
                 </div>
             </div>
