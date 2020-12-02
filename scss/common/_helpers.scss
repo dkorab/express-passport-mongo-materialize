@@ -1,7 +1,8 @@
 @mixin response-image($url) {
-  $small: str-insert($url, "_small", -5);
-  $medium: str-insert($url, "_medium", -5);
-  $large: str-insert($url, "_large", -5);
+  $small: str-insert($url, "-small", -5);
+  $medium: str-insert($url, "-medium", -5);
+  $large: str-insert($url, "-large", -5);
+  $origin: $url;
 
   background-image: url($small);
 
@@ -11,12 +12,11 @@
   only screen and (min-resolution: 144dpi),
   only screen and (min-resolution: 1.5dppx){
     /* Retina-specific stuff here */
-
     background-image: url($medium);
   }
 
   @media
-  only screen and (min-width: $screen-l) {
+  only screen and (min-width: $screen-m) {
     background-image: url($medium);
 
     @media
@@ -25,13 +25,26 @@
     (min-resolution: 144dpi),
     (min-resolution: 1.5dppx){
       /* Retina-specific stuff here */
+      background-image: url($origin);
+    }
+  }
 
-      background-image: url($large);
+  @media
+  only screen and (min-width: $screen-xl) {
+    background-image: url($large);
+
+    @media
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (-o-min-device-pixel-ratio: 3/2),
+    (min-resolution: 144dpi),
+    (min-resolution: 1.5dppx){
+      /* Retina-specific stuff here */
+      background-image: url($origin);
     }
   }
 
   @media
   only screen and (min-width: $screen-xxl) {
-    background-image: url($large);
+    background-image: url($origin);
   }
 }
