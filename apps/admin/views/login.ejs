@@ -6,24 +6,30 @@
                 <div class="card grey lighten-3">
                     <div class="card-content black-text">
                         <h1 class="card-title center">Login</h1>
+
+                        <% if (locals.notify) { %>
+                            <%- include('./partials/_notify') %>
+                        <% } %>
+
                         <form method="post">
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="input-field col s12">
-                                    <i class="material-icons prefix">email</i>
-                                    <input id="email" name="email" autocomplete="email" required="required" type="email" class="validate">
-                                    <label for="email" class="active">Email</label>
-                                    <span class="helper-text" data-error="Invalid email" data-success="Valid email">Please enter your account email</span>
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="name" name="username" autocomplete="username" required="required"
+                                           type="text">
+                                    <label for="name">Username</label>
+                                    <span class="helper-text">Please enter your account name</span>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">lock</i>
-                                    <input id="password" autocomplete="current-password" name="password" required="required" type="password" class="validate">
+                                    <input id="password" autocomplete="current-password" name="password" required="required" type="password">
                                     <label for="password" class="active">Password</label>
                                     <span class="helper-text" data-error="Enter your password" data-success="Password correct">Enter your password</span>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row no-margin">
                                 <div class="input-field col s12">
                                     <button class="btn waves-effect waves-light btn-large full-width" type="submit">Submit
                                         <i class="material-icons right">send</i>

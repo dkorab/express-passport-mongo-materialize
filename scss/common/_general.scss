@@ -3,7 +3,7 @@ html, body {
 }
 
 .my-wrapper {
-  height: 100%;
+  min-height: 100%;
 }
 
 .inline-icon {
@@ -13,4 +13,8 @@ html, body {
 
 .full-width {
   width: 100%;
+}
+
+.no-margin {
+  margin: 0;
 }

@@ -1,0 +1,13 @@
+<%# Template for notifications %>
+<% for(let i = 0, l = notify.length; i < l; i++) { %>
+
+<div class="row no-margin">
+    <div class="col s12">
+        <div class="card-panel notify notify--<%= notify[i].type %> no-pad">
+            <i class="material-icons prefix white-text inline-icon">error</i>
+            <span class="white-text"><%= notify[i].text %></span>
+        </div>
+    </div>
+</div>
+
+<% } %>

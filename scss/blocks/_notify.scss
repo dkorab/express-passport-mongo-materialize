@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.notify {
+  &--error {
+    @extend .red, .lighten-3;
+  }
+
+  &--success {
+    @extend .green, .lighten-1;
+  }
+}
