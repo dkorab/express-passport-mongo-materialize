@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"file": "starter.css",
+	"sources": [
+		"../../scss/starter.scss",
+		"../../scss/common/_variables.scss",
+		"../../scss/common/_helpers.scss"
+	],
+	"names": [],
+	"mappings": "AAKA,AAAA,IAAI,CAAE,IAAI,AAAC,CACT,MAAM,CAAE,IAAI,CACZ,MAAM,CAAE,CAAC,CACV,AACD,AAAA,aAAa,AAAC,CACZ,MAAM,CAAE,CAAC,CACT,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,SAAS,CACjB,cAAc,CAAE,SAAS,CAK1B,AATD,AAME,aANW,CAMT,CAAC,AAAC,CACF,OAAO,CAAE,eAAe,CACzB,AAEH,AAAA,mBAAmB,AAAC,CAClB,mBAAmB,CAAE,aAAa,CAClC,iBAAiB,CAAG,SAAS,CAC7B,qBAAqB,CAAE,KAAK,CAC5B,eAAe,CAAG,KAAK,CACvB,gBAAgB,CAAE,IAAI,CACtB,gBAAgB,CAAE,0CAA0C,CAC7D"
+}

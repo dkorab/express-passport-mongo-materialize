@@ -1,51 +1,49 @@
 <!-- Page Content goes here -->
-<main class="my-wrapper valign-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m10 l8 offset-m1 offset-l2">
-                <div class="card grey lighten-3">
-                    <div class="card-content black-text">
-                        <h1 class="card-title center">Login</h1>
+<main class="container">
+    <div class="row">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text">
+                    <h1 class="card-title center">Login</h1>
 
-                        <% if (locals.notify) { %>
-                            <%- include('./partials/_notify') %>
-                        <% } %>
+                    <% if (locals.notify) { %>
+                        <%- include('./partials/_notify') %>
+                    <% } %>
 
-                        <form method="post">
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="name" name="username" autocomplete="username" required="required"
-                                           type="text">
-                                    <label for="name">Username</label>
-                                    <span class="helper-text">Please enter your account name</span>
-                                </div>
+                    <form method="post">
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="name" name="username" autocomplete="username" required="required"
+                                       type="text">
+                                <label for="name">Username</label>
+                                <span class="helper-text">Please enter your account name</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">lock</i>
-                                    <input id="password" autocomplete="current-password" name="password" required="required" type="password">
-                                    <label for="password" class="active">Password</label>
-                                    <span class="helper-text" data-error="Enter your password" data-success="Password correct">Enter your password</span>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="password" autocomplete="current-password" name="password" required="required" type="password">
+                                <label for="password" class="active">Password</label>
+                                <span class="helper-text" data-error="Enter your password" data-success="Password correct">Enter your password</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <button class="btn waves-effect waves-light btn-large full-width" type="submit">Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light btn-large full-width" type="submit">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-action">
-                        <a href="/" title="Go to main page">
-                            <i class="material-icons inline-icon">chevron_left</i>Homepage
-                        </a>
-                        <a href="/admin/register" class="right">
-                            Sign up<i class="material-icons inline-icon">chevron_right</i>
-                        </a>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-action">
+                    <a href="/" title="Go to main page">
+                        <i class="material-icons inline-icon">chevron_left</i>Homepage
+                    </a>
+                    <a href="/admin/register" class="right">
+                        Sign up<i class="material-icons inline-icon">chevron_right</i>
+                    </a>
                 </div>
             </div>
         </div>

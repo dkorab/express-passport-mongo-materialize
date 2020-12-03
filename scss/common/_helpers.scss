@@ -12,12 +12,12 @@
   only screen and (min-resolution: 144dpi),
   only screen and (min-resolution: 1.5dppx){
     /* Retina-specific stuff here */
-    background-image: url($medium);
+    background-image: url($medium), url($small);
   }
 
   @media
   only screen and (min-width: $screen-m) {
-    background-image: url($medium);
+    background-image: url($medium), url($small);
 
     @media
     (-webkit-min-device-pixel-ratio: 1.5),
@@ -25,13 +25,13 @@
     (min-resolution: 144dpi),
     (min-resolution: 1.5dppx){
       /* Retina-specific stuff here */
-      background-image: url($origin);
+      background-image: url($origin), url($small);
     }
   }
 
   @media
   only screen and (min-width: $screen-xl) {
-    background-image: url($large);
+    background-image: url($large), url($small);
 
     @media
     (-webkit-min-device-pixel-ratio: 1.5),
@@ -39,12 +39,12 @@
     (min-resolution: 144dpi),
     (min-resolution: 1.5dppx){
       /* Retina-specific stuff here */
-      background-image: url($origin);
+      background-image: url($origin), url($small);
     }
   }
 
   @media
   only screen and (min-width: $screen-xxl) {
-    background-image: url($origin);
+    background-image: url($origin), url($small);
   }
 }

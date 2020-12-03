@@ -25,7 +25,7 @@ router.get('/', isAuthenticated, (req, res) => {
 
 /* GET login page. */
 router.get('/login', (req, res) => {
-    const notify = req.flash('login');
+    const notify = req.flash('notify');
     const errors = req.flash('error');
 
     errors.forEach(err => {
@@ -53,7 +53,7 @@ router.post('/login', (req, res, next) => {
 /* GET logout user. */
 router.get('/logout', (req, res) => {
     req.logout();
-    req.flash('login', {text: 'You are successfully logged out', type: 'success'});
+    req.flash('notify', {text: 'You are successfully logged out', type: 'success'});
     res.redirect('/admin/login');
 });
 
@@ -141,7 +141,7 @@ router.post('/register', async (req, res, next) => {
             const user = await newUser.save();
 
             req.flash(); // clean old
-            req.flash('login', {text: 'You have been correctly registered. Please, use your credentials to log in', type: 'success'});
+            req.flash('notify', {text: 'You have been correctly registered. Please, use your credentials to log in', type: 'success'});
 
             // redirect to login page
             res.redirect('/admin/login');

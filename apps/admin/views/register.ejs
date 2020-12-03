@@ -4,79 +4,77 @@ const passMax = typeof passwordMax === 'undefined' ? 128 : passwordMax;
 %>
 
 <!-- Page Content goes here -->
-<main class="my-wrapper valign-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m10 l8 offset-m1 offset-l2">
-                <div class="card grey lighten-3">
-                    <div class="card-content black-text">
-                        <h1 class="card-title center">Register</h1>
+<main class="container">
+    <div class="row">
+        <div class="col s12 m10 l8 offset-m1 offset-l2">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text">
+                    <h1 class="card-title center">Register</h1>
 
-                        <% if (locals.notify) { %>
-                            <%- include('./partials/_notify') %>
-                        <% } %>
+                    <% if (locals.notify) { %>
+                        <%- include('./partials/_notify') %>
+                    <% } %>
 
-                        <form method="post">
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="name" name="username" autocomplete="username" required="required"
-                                           type="text" class="validate" value="<%= locals.username ? username : '' %>">
-                                    <label for="name">Username</label>
-                                    <span class="helper-text">Please enter your account name</span>
-                                </div>
+                    <form method="post">
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="name" name="username" autocomplete="username" required="required"
+                                       type="text" class="validate" value="<%= locals.username ? username : '' %>">
+                                <label for="name">Username</label>
+                                <span class="helper-text">Please enter your account name</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">email</i>
-                                    <input id="email" name="email" autocomplete="email" required="required" type="email"
-                                           class="validate" value="<%= locals.email ? email : '' %>">
-                                    <label for="email">Email</label>
-                                    <span class="helper-text" data-error="Invalid email" data-success="Valid email">Please enter your account email</span>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" name="email" autocomplete="email" required="required" type="email"
+                                       class="validate" value="<%= locals.email ? email : '' %>">
+                                <label for="email">Email</label>
+                                <span class="helper-text" data-error="Invalid email" data-success="Valid email">Please enter your account email</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">lock</i>
-                                    <input id="password" autocomplete="new-password" name="password" required="required"
-                                           type="password" class="validate"
-                                           maxlength="<%= passMax %>">
-                                    <label for="password">Password</label>
-                                    <span class="helper-text"
-                                          data-error="Enter your password, min length is <%= passMin %> characters"
-                                          data-success="Password correct">Enter your password, min length is <%= passMin %> characters</span>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="password" autocomplete="new-password" name="password" required="required"
+                                       type="password" class="validate"
+                                       maxlength="<%= passMax %>">
+                                <label for="password">Password</label>
+                                <span class="helper-text"
+                                      data-error="Enter your password, min length is <%= passMin %> characters"
+                                      data-success="Password correct">Enter your password, min length is <%= passMin %> characters</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">lock_outline</i>
-                                    <input id="password2" autocomplete="new-password" name="password2"
-                                           required="required" type="password" class="validate"
-                                           minlength="<%= passMin %>" maxlength="<%= passMax %>"
-                                           onkeyup="check(this)" onblur="check(this)">
-                                    <label for="password2">Password (confirm)</label>
-                                    <span class="helper-text" data-error="Password not match"
-                                          data-success="Password match">Re-enter the password</span>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="password2" autocomplete="new-password" name="password2"
+                                       required="required" type="password" class="validate"
+                                       minlength="<%= passMin %>" maxlength="<%= passMax %>"
+                                       onkeyup="check(this)" onblur="check(this)">
+                                <label for="password2">Password (confirm)</label>
+                                <span class="helper-text" data-error="Password not match"
+                                      data-success="Password match">Re-enter the password</span>
                             </div>
-                            <div class="row no-margin">
-                                <div class="input-field col s12">
-                                    <button class="btn waves-effect waves-light btn-large full-width" type="submit">
-                                        Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light btn-large full-width" type="submit">
+                                    Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-action">
-                        <a href="/" class="" title="Go to main page">
-                            <i class="material-icons inline-icon">chevron_left</i>Homepage
-                        </a>
-                        <a href="/admin/login" class="right" title="Go to login page">
-                            Sign in<i class="material-icons inline-icon">chevron_right</i>
-                        </a>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-action">
+                    <a href="/" class="" title="Go to main page">
+                        <i class="material-icons inline-icon">chevron_left</i>Homepage
+                    </a>
+                    <a href="/admin/login" class="right" title="Go to login page">
+                        Sign in<i class="material-icons inline-icon">chevron_right</i>
+                    </a>
                 </div>
             </div>
         </div>

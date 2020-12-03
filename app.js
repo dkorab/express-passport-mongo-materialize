@@ -78,7 +78,21 @@ app.use(sassMiddleware({
     indentedSyntax: false, // true = .sass and false = .scss
     sourceMap: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// cache control
+app.set('etag', false);
+app.get('/*', function (req, res, next) {
+    console.log(req.url);
+    if (req.url.indexOf('/images/') === 0 || req.url.indexOf('/css/' ) === 0 || req.url.indexOf('/js/' ) === 0) {
+        console.log(req.url);
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+    }
+
+    next();
+});
+
+// static files
+app.use(express.static(path.join(__dirname, 'public'), {etag: false}));
 
 // load routes
 app.use('/', indexRouter);
