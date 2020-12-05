@@ -1,6 +1,8 @@
 // import basic modules
+const browserCache = require('./middleware/browser-cache');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
+const errorHandler = require('./middleware/error-handler');
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('./middleware/flash');
@@ -81,15 +83,9 @@ app.use(sassMiddleware({
 
 // cache control
 app.set('etag', false);
-app.get('/*', function (req, res, next) {
-    console.log(req.url);
-    if (req.url.indexOf('/images/') === 0 || req.url.indexOf('/css/' ) === 0 || req.url.indexOf('/js/' ) === 0) {
-        console.log(req.url);
-        res.setHeader('Cache-Control', 'public, max-age=3600');
-    }
-
-    next();
-});
+app.get('/*', browserCache('/images/', 3600)); // TODO 3600 is temporary
+app.get('/*', browserCache('/css/', 3600));
+app.get('/*', browserCache('/js/', 3600));
 
 // static files
 app.use(express.static(path.join(__dirname, 'public'), {etag: false}));
@@ -104,15 +100,7 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
+app.use(errorHandler);
 
 //export
 module.exports = app;
