@@ -13,15 +13,18 @@ html, body {
   filter: blur(8px);
   -webkit-filter: blur(8px);
 
-  &>* {
-    display: none !important;
-  }
-}
-.cover-full-image {
   background-position: center center;
   background-repeat:  no-repeat;
   background-attachment: fixed;
   background-size:  cover;
   background-color: #999;
   background-image: url('/images/landscape/iceland-small.jpg');
+
+  &>*:not(.release-icons) {
+    display: none !important;
+  }
+}
+
+.release-icons {
+  opacity: 0.1;
 }

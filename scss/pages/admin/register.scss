@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* Load materialize */
+@import "../../materialize/materialize";
+
+/* Load general files */
+@import "../../common/variables";
+@import "../../common/helpers";
+@import "../../common/general";
+
+/* Load block files */
+@import "../../blocks/footer";
+@import "../../blocks/notify";
+@import "../../blocks/image/cover_full_image_1";

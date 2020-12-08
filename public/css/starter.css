@@ -1,3 +1,3 @@
-html,body{height:100%;margin:0}.page-starter{margin:0;min-height:100%;filter:blur(8px);-webkit-filter:blur(8px)}.page-starter>*{display:none !important}.cover-full-image{background-position:center center;background-repeat:no-repeat;background-attachment:fixed;background-size:cover;background-color:#999;background-image:url("/images/landscape/iceland-small.jpg")}
+html,body{height:100%;margin:0}.page-starter{margin:0;min-height:100%;filter:blur(8px);-webkit-filter:blur(8px);background-position:center center;background-repeat:no-repeat;background-attachment:fixed;background-size:cover;background-color:#999;background-image:url("/images/landscape/iceland-small.jpg")}.page-starter>*:not(.release-icons){display:none !important}.release-icons{opacity:0.1}
 
 /*# sourceMappingURL=starter.css.map */

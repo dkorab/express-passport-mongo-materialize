@@ -35,6 +35,7 @@ router.get('/login', (req, res) => {
     res.render(path.join(__dirname, 'views', 'login'), {
         layout: path.join(__dirname, 'views', 'layouts', 'admin'),
         pageCss: '/css/pages/admin/login.css',
+        pageJs: '/js/pages/admin/login.js',
         notify: notify,
         pageTitle: 'Login'
     });
@@ -63,7 +64,8 @@ router.get('/register', (req, res) => {
         layout: path.join(__dirname, 'views', 'layouts', 'admin'),
         passwordMin: passwordMin,
         passwordMax: passwordMax,
-        pageCss: '/css/pages/admin/login.css',
+        pageCss: '/css/pages/admin/register.css',
+        pageJs: '/js/pages/admin/register.js',
         pageTitle: 'Register'
     });
 });
@@ -121,7 +123,8 @@ router.post('/register', async (req, res, next) => {
             notify: errors,
             username: username,
             email: email,
-            pageCss: '/css/pages/admin/login.css',
+            pageCss: '/css/pages/admin/register.css',
+            pageJs: '/js/pages/admin/register.js',
             pageTitle: 'Register'
         });
     } else {
