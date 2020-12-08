@@ -6,7 +6,9 @@
   "scripts": {
     "start": "DEBUG=express-passport-mongo-materialize:* PORT=3333 node ./bin/www",
     "build": "./build.sh",
-    "watch": "./watch.sh"
+    "watch": "./watch.sh",
+    "version": "npm run build && git add -A .",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
