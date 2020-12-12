@@ -1,11 +1,54 @@
 const bcrypt =require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
+const {google, facebook} = require('./keys');
 
 // Load User Model
 const User = mongoose.model('users');
 
+const socialVerify = method => {
+    return (accessToken, refreshToken, profile, done) => {
+        // Check profile ID
+        if (!profile.hasOwnProperty('id') || typeof profile.id !== 'string') {
+            return done(null, false, 'Wrong ID');
+        }
+
+        let query = {}
+        query[method + '_id'] = profile.id;
+
+        // Find user in mongo
+        User.findOne(query).then(user => {
+            if (!user) {
+                return done(null, false, {profile: {id: profile.id}});
+            }
+
+            return done(null, user);
+        }).catch(err => done(err));
+    }
+}
+
 module.exports = function (passport) {
+    // Google oauth2.0 strategy
+    passport.use(new GoogleStrategy({
+        clientID: google.clientID,
+        clientSecret: google.clientSecret,
+        callbackURL: google.callbackURL,
+        proxy: true
+    }, socialVerify('google')));
+
+    // Facebook oauth2.0 strategy
+    passport.use(new FacebookStrategy({
+        clientID: facebook.clientID,
+        clientSecret: facebook.clientSecret,
+        callbackURL: facebook.callbackURL,
+        enableProof: true,
+        profileFields: ['id'],
+        proxy: true
+    }, socialVerify('facebook')));
+
+    // Local strategy
     passport.use(new LocalStrategy({}, (username, password, done) => {
         // check for not allowed characters
         const reSpecial = new RegExp('^[^<>%\$\'";()\\\\/]*$');
@@ -31,8 +74,8 @@ module.exports = function (passport) {
                     return done(null, false, 'Password incorrect');
                 }
             })
-        });
-    }) );
+        }).catch(err => done(err));
+    }));
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -40,7 +83,7 @@ module.exports = function (passport) {
 
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
-            done(err, user);
+            done(err, user); // TODO: add error redirect to login page
         });
     });
 }

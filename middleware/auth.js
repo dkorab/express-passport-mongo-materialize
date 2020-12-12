@@ -4,7 +4,14 @@ module.exports = {
             return next();
         }
 
-        req.flash('login', {type: 'error', text: 'You are not authorized for to these resources'});
+        req.flash('notify', {type: 'error', text: 'You are not authorized to use these resources'});
         res.redirect('/admin/login');
+    },
+    isNotAuthenticated: (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            return next();
+        }
+
+        res.redirect('/admin');
     }
 }

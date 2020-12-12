@@ -13,8 +13,14 @@ const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const session = require('express-session')
 
+// config
+const {mongodb} = require('./config/keys');
+
 // main app
 const app = express();
+
+// admin application app
+const admin = '/admin';
 
 // set session
 const sess = {
@@ -22,7 +28,7 @@ const sess = {
     resave: false,
     saveUninitialized: false,
     cookie: {
-        path: '/admin',
+        path: admin,
         sameSite: 'strict',
         maxAge: 1800000 // 30 min - in milliseconds
     }
@@ -33,16 +39,16 @@ if (app.get('env') === 'production') {
     sess.cookie.secure = true // serve secure cookies
 }
 
-app.use('/admin', session(sess)); // only for admin
-app.use('/admin', flash); // only for admin
+app.use(admin, session(sess)); // only for admin
+app.use(admin, flash); // only for admin
 
 // passport middleware
-app.use('/admin', passport.initialize());
-app.use('/admin', passport.session());
+app.use(admin, passport.initialize());
+app.use(admin, passport.session());
 
 // globals
 
-app.use('/admin', (req, res, next) => {
+app.use(admin, (req, res, next) => {
     res.locals.user = req.user || null;
 
     next();
@@ -62,7 +68,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // connect to mongo
-mongoose.connect('mongodb://127.0.0.1:27017/mpk', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(mongodb.uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 
@@ -82,8 +88,8 @@ app.use(sassMiddleware({
 }));
 
 // cache control
-app.set('etag', false);
-app.get('/*', browserCache('/images/', 3600)); // TODO 3600 is temporary
+// app.set('etag', false);
+app.get('/*', browserCache('/images/', 3600)); // TODO: 3600 is temporary
 app.get('/*', browserCache('/css/', 3600));
 app.get('/*', browserCache('/js/', 3600));
 
@@ -92,7 +98,7 @@ app.use(express.static(path.join(__dirname, 'public'), {etag: false}));
 
 // load routes
 app.use('/', indexRouter);
-app.use('/admin', adminRouter);
+app.use(admin, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -8,3 +8,6 @@ node_modules/
 
 # IDE
 .idea
+
+# Config
+config/keys.js

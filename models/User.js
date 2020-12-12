@@ -15,6 +15,14 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    google_id: {
+        type: String,
+        required: false
+    },
+    facebook_id: {
+        type: String,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now
