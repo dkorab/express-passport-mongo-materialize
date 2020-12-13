@@ -1,0 +1,17 @@
+module.exports = {
+    mongodb: {
+        uri: ''
+    },
+    google: {
+        clientID: '',
+        clientSecret: '',
+        callbackURL: ''
+    },
+    facebook: {
+        clientID: '',
+        clientSecret: '',
+        callbackURL: ''
+    }
+}
+
+// Google scopes: https://www.googleapis.com/discovery/v1/apis/oauth2/v2/rest?fields=auth(oauth2(scopes))

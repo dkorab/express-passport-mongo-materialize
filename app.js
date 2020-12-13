@@ -92,6 +92,7 @@ app.use(sassMiddleware({
 app.get('/*', browserCache('/images/', 3600)); // TODO: 3600 is temporary
 app.get('/*', browserCache('/css/', 3600));
 app.get('/*', browserCache('/js/', 3600));
+app.get('/*', browserCache('/fonts/', 3600));
 
 // static files
 app.use(express.static(path.join(__dirname, 'public'), {etag: false}));

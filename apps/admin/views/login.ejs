@@ -13,7 +13,7 @@
                     <form method="post">
                         <div class="row no-margin">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="icomoon i-user-circle-o prefix"></i>
                                 <input id="name" name="username" autocomplete="username" required="required"
                                        type="text">
                                 <label for="name">Username</label>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="row no-margin">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">lock</i>
+                                <i class="icomoon i-https prefix"></i>
                                 <input id="password" autocomplete="current-password" name="password" required="required" type="password">
                                 <label for="password" class="active">Password</label>
                                 <span class="helper-text" data-error="Enter your password" data-success="Password correct">Enter your password</span>
@@ -31,18 +31,31 @@
                         <div class="row no-margin">
                             <div class="input-field col s12">
                                 <button class="btn waves-effect waves-light btn-large full-width" type="submit">Submit
-                                    <i class="material-icons right">send</i>
+                                    <i class="icomoon i-send right"></i>
                                 </button>
+                            </div>
+                        </div>
+                        <div class="row no-margin">
+                            <p class="center">or log in by:</p>
+                            <div class="input-field col s12 l6">
+                                <a href="/admin/auth/google" title="Log in using Google" class="btn waves-effect waves-light btn-large btn-google full-width">Google
+                                    <i class="icomoon i-google right"></i>
+                                </a>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <a href="/admin/auth/facebook" title="Log in using Facebook" class="btn waves-effect waves-light btn-large btn-facebook full-width">Facebook
+                                    <i class="icomoon i-facebook right"></i>
+                                </a>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-action">
                     <a href="/" title="Go to main page">
-                        <i class="material-icons inline-icon">chevron_left</i>Homepage
+                        <i class="icomoon i-navigate_before inline-icon"></i>Homepage
                     </a>
                     <a href="/admin/register" class="right">
-                        Sign up<i class="material-icons inline-icon">chevron_right</i>
+                        Sign up<i class="icomoon i-navigate_next inline-icon"></i>
                     </a>
                 </div>
             </div>

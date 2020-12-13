@@ -8,7 +8,17 @@ html, body, {
 
 .inline-icon {
   vertical-align: bottom;
-  font-size: 1.5em;
+  font-size: 1.7em;
+
+  @media
+  only screen and (min-width: $screen-m) {
+    font-size: 1.65em;
+  }
+
+  @media
+  only screen and (min-width: $screen-l) {
+    font-size: 1.55em;
+  }
 }
 
 .full-width {
@@ -17,4 +27,20 @@ html, body, {
 
 .no-margin {
   margin: 0;
+}
+
+.btn-facebook {
+  background-color: $color-facebook;
+
+  &:hover {
+    background-color: lighten($color-facebook, 10%);
+  }
+}
+
+.btn-google {
+  background-color: $color-google;
+
+  &:hover {
+    background-color: lighten($color-google, 10%);
+  }
 }
