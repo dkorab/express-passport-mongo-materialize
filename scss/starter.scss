@@ -6,14 +6,13 @@
 // icomoon icons:
 @import "./blocks/icons/icommon";
 
-html {
-  min-height: 100%;
-  position: relative;
-}
-
-body {
+html,body {
   height: 100%;
   margin: 0;
+}
+
+html {
+  position: relative;
 }
 
 .page-starter {
