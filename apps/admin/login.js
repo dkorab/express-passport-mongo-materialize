@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const passport = require('passport')
 const path = require('path');
-const {isNotAuthenticated} = require('../../middleware/auth');
+const {isNotAuthenticated, isAuthenticated} = require('../../middleware/auth');
 
 // Load User Model
 require('../../models/User');
@@ -14,6 +14,11 @@ const passwordMax = 128;
 const reSpecial = new RegExp('^[^<>%\$\'";()\\\\/]*$');
 const reEmail = new RegExp('^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$');
 
+/**
+ * Passport local routing
+ * @module login
+ * @param router
+ */
 module.exports = (router) => {
     /* <<<<<<<<<<<<<<<<<<<<< LOCAL >>>>>>>>>>>>>>>>>>>> */
 
@@ -27,7 +32,7 @@ module.exports = (router) => {
         });
 
         res.render(path.join(__dirname, 'views', 'login'), {
-            layout: path.join(__dirname, 'views', 'layouts', 'admin'),
+            layout: path.join(__dirname, 'views', 'layouts', 'auth'),
             pageCss: '/css/pages/admin/login.css',
             pageJs: '/js/pages/admin/login.js',
             notify: notify,
@@ -46,7 +51,7 @@ module.exports = (router) => {
     });
 
     /* GET logout user. */
-    router.get('/logout', (req, res) => {
+    router.get('/logout', isAuthenticated, (req, res) => {
         req.logout();
         req.flash('notify', {text: 'You are successfully logged out', type: 'success'});
         res.redirect('/admin/login');
@@ -55,7 +60,7 @@ module.exports = (router) => {
     /* GET register page. */
     router.get('/register', isNotAuthenticated, (req, res) => {
         res.render(path.join(__dirname, 'views', 'register'), {
-            layout: path.join(__dirname, 'views', 'layouts', 'admin'),
+            layout: path.join(__dirname, 'views', 'layouts', 'auth'),
             passwordMin: passwordMin,
             passwordMax: passwordMax,
             pageCss: '/css/pages/admin/register.css',
@@ -111,7 +116,7 @@ module.exports = (router) => {
 
         if (errors.length > 0) {
             res.render(path.join(__dirname, 'views', 'register'), {
-                layout: path.join(__dirname, 'views', 'layouts', 'admin'),
+                layout: path.join(__dirname, 'views', 'layouts', 'auth'),
                 passwordMin: passwordMin,
                 passwordMax: passwordMax,
                 notify: errors,

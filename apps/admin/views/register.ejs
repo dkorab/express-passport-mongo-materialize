@@ -11,9 +11,7 @@ const passMax = typeof passwordMax === 'undefined' ? 128 : passwordMax;
                 <div class="card-content black-text">
                     <h1 class="card-title center">Register</h1>
 
-                    <% if (locals.notify) { %>
-                        <%- include('./partials/_notify') %>
-                    <% } %>
+                    <%- include('./partials/_notify') %>
 
                     <form method="post">
                         <div class="row no-margin">

@@ -6,9 +6,7 @@
                 <div class="card-content black-text">
                     <h1 class="card-title center">Login</h1>
 
-                    <% if (locals.notify) { %>
-                        <%- include('./partials/_notify') %>
-                    <% } %>
+                    <%- include('./partials/_notify') %>
 
                     <form method="post">
                         <div class="row no-margin">
@@ -46,7 +44,7 @@
                             </div>
                             <div class="input-field col s12 l6">
                                 <a href="/admin/auth/facebook" title="Log in using Facebook" class="btn waves-effect waves-light btn-large btn-facebook full-width">Facebook
-                                    <i class="icomoon i-facebook right"></i>
+                                    <i class="icomoon i-facebook left"></i>
                                 </a>
                             </div>
                         </div>

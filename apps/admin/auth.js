@@ -1,16 +1,21 @@
 const passport = require('passport')
 const socialCallback = require('../../middleware/auth-social-callback');
 
-const {isAuthenticated} = require('../../middleware/auth');
+const {isAuthenticated, isNotAuthenticated} = require('../../middleware/auth');
 
+/**
+ * Passport facebook and google oauth2.0 routing
+ * @module auth
+ * @param router
+ */
 module.exports = (router) => {
     /* <<<<<<<<<<<<<<<<<<<<< GOOGLE >>>>>>>>>>>>>>>>>>>> */
 
     /* GET auth google redirect */
-    router.get('/auth/google', passport.authenticate('google', {scope: ['openid'], state: 'auth'}));
+    router.get('/auth/google', isNotAuthenticated, passport.authenticate('google', {scope: ['openid'], state: 'auth'}));
 
     /* GET register google redirect */
-    router.get('/auth/google/register', passport.authenticate('google', {scope: ['openid'], state: 'register'}));
+    router.get('/auth/google/register', isAuthenticated, passport.authenticate('google', {scope: ['openid'], state: 'register'}));
 
     /* GET auth google callback */
     router.get('/auth/google/callback', socialCallback('google'));
@@ -18,10 +23,10 @@ module.exports = (router) => {
     /* <<<<<<<<<<<<<<<<<<<<< FACEBOOK >>>>>>>>>>>>>>>>>>>> */
 
     /* GET auth facebook redirect */
-    router.get('/auth/facebook', passport.authenticate('facebook', {state: 'auth'}));
+    router.get('/auth/facebook', isNotAuthenticated, passport.authenticate('facebook', {state: 'auth'}));
 
     /* GET register facebook redirect */
-    router.get('/auth/facebook/register', passport.authenticate('facebook', {state: 'register'}));
+    router.get('/auth/facebook/register', isAuthenticated, passport.authenticate('facebook', {state: 'register'}));
 
     /* GET auth facebook callback */
     router.get('/auth/facebook/callback', socialCallback('facebook'));

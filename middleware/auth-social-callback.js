@@ -1,5 +1,11 @@
 const passport = require('passport');
 
+/**
+ * Callback function for passport oauth2.0 strategy for social services like google or facebook
+ *
+ * @param {string} method - name of social oauth2.0 strategy, eg: 'facebook'
+ * @returns {function(*=, *=, *=): void}
+ */
 module.exports = method => {
     return (req, res, next) => {
         passport.authenticate(method, {}, async function (err, user, info) {

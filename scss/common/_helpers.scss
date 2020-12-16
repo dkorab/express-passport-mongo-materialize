@@ -1,4 +1,30 @@
-@mixin response-image($url) {
+/**
+  Generate style for background image on full page based on @media
+
+  @param {string} $url - url path to origin name, return example based on @media: '/example.jpg' -> ['/example.jpg', '/example-small.jpg', '/example-medium.jpg', '/example-large.jpg']
+  @param {boolean} $isAfter - set options for :after
+ */
+@mixin response-image($url, $isAfter) {
+  @if $isAfter {
+    display: block;
+    content: '';
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow:hidden;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-attachment: fixed;
+  background-size:  cover;
+  background-color: #999;
+
   $small: str-insert($url, "-small", -5);
   $medium: str-insert($url, "-medium", -5);
   $large: str-insert($url, "-large", -5);

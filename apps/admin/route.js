@@ -1,6 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const path = require('path');
 const router = express.Router();
 const {isAuthenticated} = require('../../middleware/auth');
 
@@ -15,7 +13,7 @@ router.get('/', isAuthenticated, (req, res) => {
 // add login local routing
 require('./login')(router);
 
-// add auth routing
+// add auth local routing
 require('./auth')(router);
 
 module.exports = router;
