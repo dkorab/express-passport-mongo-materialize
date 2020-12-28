@@ -1,19 +1,24 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 const {isAuthenticated} = require('../../middleware/auth');
 
 
 /* GET admin home page. */
 router.get('/', isAuthenticated, (req, res) => {
-    console.log(req.user);
-
-    res.send('Admin (logged in) <a href="/admin/logout">logout</a>');
+    res.render(path.join(__dirname, 'views', 'index'), {
+        layout: path.join(__dirname, 'views', 'layouts', 'admin'),
+        user: req.user,
+        pageCss: '/css/pages/admin/index.css',
+        pageJs: '/js/pages/admin/index.js',
+        pageTitle: `Welcome ${req.user.username}`
+    });
 });
 
 // add login local routing
-require('./login')(router);
+require('./loginRoute')(router);
 
 // add auth local routing
-require('./auth')(router);
+require('./authRoute')(router);
 
 module.exports = router;

@@ -8,3 +8,7 @@ fi
 if [ "$1" = 'register' ]; then
   watchify ./js/pages/admin/register -o ./public/js/pages/admin/register.js --debug --verbose
 fi
+
+if [ "$1" = 'index' ]; then
+  watchify ./js/pages/admin/index -o ./public/js/pages/admin/index.js --debug --verbose
+fi

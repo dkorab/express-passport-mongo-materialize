@@ -82,7 +82,8 @@ module.exports = function (passport) {
     });
 
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        // removing tokens for security, no needed in most cases
+        User.findById(id, '-password -facebook_id -google_id -__v', function(err, user) {
             done(err, user); // TODO: add error redirect to login page
         });
     });

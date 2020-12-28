@@ -23,11 +23,10 @@ const userSchema = new Schema({
         type: String,
         required: false
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
-});
+}, { timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+} });
 
 // Model
 

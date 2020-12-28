@@ -1,0 +1,5 @@
+// remove height from body, and set min-height to 100%
+
+.cover-full-image:after {
+  @include response-image('/images/landscape/iceland.jpg', true);
+}
